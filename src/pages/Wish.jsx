@@ -15,8 +15,8 @@ const Wish = () => {
   };
 
   const addWish = () => {
-    if (newWish.length > 0 && newWish.length <= 250) {
-      setWishes([{ text: newWish, likes: 0 }, ...wishes]);
+    if (newWish.trim().length > 0 && newWish.trim().length <= 250) {
+      setWishes([{ text: newWish.trim(), likes: 0 }, ...wishes]);
       setNewWish('');
       onClose();
     }
@@ -46,7 +46,7 @@ const Wish = () => {
           <ModalHeader>Add a New Wish</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Input placeholder="Your wish (max 250 words)" value={newWish} onChange={(e) => setNewWish(e.target.value)} />
+            <Input placeholder="Your wish (max 250 characters)" value={newWish} onChange={(e) => setNewWish(e.target.value)} />
           </ModalBody>
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={addWish}>Add Wish</Button>
